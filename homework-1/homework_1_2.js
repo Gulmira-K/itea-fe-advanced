@@ -2,10 +2,10 @@
 
 Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i]. */
 
-function largestOfFour(arr) {
+function largestOfFour(arrs) {
   let maxNums = []
-  arr.forEach(item => {
-    item.reduce((prev, num) => {
+  arrs.forEach(arr => {
+    arr.reduce((prev, num) => {
       if (num > prev) {
         maxNums.push(num)
       }
