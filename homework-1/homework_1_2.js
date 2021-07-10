@@ -3,14 +3,17 @@
 Remember, you can iterate through an array with a simple for loop, and access each member with array syntax arr[i]. */
 
 function largestOfFour(arrs) {
-  let newArr = []
+  let newArr = [];
+  
   arrs.forEach(arr => {
     const maxNum = arr.reduce((prev, num) => {
-      return prev < num ? num : prev
+      return prev < num ? num : prev;
     })
-    newArr.push(maxNum)
+
+    newArr.push(maxNum);
   })
-  return newArr
+
+  return newArr;
 }
 
 console.log(largestOfFour([[4, 5, 1, 3], [13, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]))

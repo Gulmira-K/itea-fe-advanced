@@ -8,28 +8,28 @@ Open brackets must be closed in the correct order.
 
 function validateParens(string) {
   let charactersArray = string.split('').reduce((accumulator, character) => {
-    let openParens = ['(', '[', '{']
-    let closeParens = [')', ']', '}']
+    let openParens = ['(', '[', '{'],
+        closeParens = [')', ']', '}'];
  
     if (openParens.indexOf(character) !== -1) {
-      accumulator.push(character)  
+      accumulator.push(character);
     } else if (closeParens.indexOf(character) !== -1 &&
       closeParens.indexOf(character) === openParens.indexOf(accumulator[accumulator.length - 1])) {
         accumulator.pop();
     } else {
-      accumulator.push("invalid")
+      accumulator.push("invalid");
     }
     
-    return accumulator
+    return accumulator;
   }, [])
   
-  return !charactersArray.length
+  return !charactersArray.length;
 }
 
-let str = '[)'
-let str1 = '[())]'
-let str2 = ')('
-let str3 = '([{}])'
+let str = '[)',
+    str1 = '[())]',
+    str2 = ')(',
+    str3 = '([{}])';
 
 console.log(validateParens(str))
 console.log(validateParens(str1))
