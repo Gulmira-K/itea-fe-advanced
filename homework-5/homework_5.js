@@ -1,7 +1,6 @@
-// STRINGS: hw: startsWith, endsWith, repeat, includes
-
-// Object: asign, is
-//HM: function mixin
+// POLYFILLS:
+// STRINGS: startsWith, endsWith, repeat, includes
+// OBJECT: function mixin
 
 
 // startsWith()
@@ -16,9 +15,9 @@ function startsWith(searchStr, position = 0) {
   }
 
   if(position) {
-    console.log(str.slice(position, searchStr.length + 1) === searchStr);
+    return str.slice(position, searchStr.length + 1) === searchStr;
   } else {
-    console.log(str.slice(position, searchStr.length) === searchStr);
+    return str.slice(position, searchStr.length) === searchStr;
   }
 }
 
@@ -38,8 +37,7 @@ function endsWith(searchStr) {
 
 // repeat()
 
-let repeated = [];
-let i;
+let repeated = [], i;
 
 repeat(str, 3.5);
 
@@ -62,8 +60,8 @@ function repeat(str, times) {
 
 // includes()
 
-const sentence = 'Find if word is included'
-const word = 'no'
+const sentence = 'Find if word is included',
+      word = 'if';
 
 includes(sentence, word)
 
@@ -80,5 +78,28 @@ function includes(sentence, word) {
     } else {
       console.log(word + ' is NOT found in ' + sentence)
     }
+  }
+}
+
+
+// mixin
+
+const obj = { a: 1, b: 2, c: 3 },
+  obj1 = { c: 4, d: 5 };
+
+let prop;
+      
+mixin(obj, obj1);
+
+function mixin(target, source) {
+  if (typeof target !== 'object' || typeof source !== 'object') {
+    throw new Error('No objects found')
+  }
+
+  for (prop in source) {
+    if (source.hasOwnProperty(prop)) {
+      target[prop] = source[prop]
+    }
+    return target
   }
 }
