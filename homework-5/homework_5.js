@@ -70,14 +70,18 @@ function includes(sentence, word) {
     throw new Error('No sentence or word provided')
   }
 
-  const sentenceArr = sentence.split(' ')
+  const sentenceArr = sentence.split(' '), newArray = [];
 
-  for (i = 0; i <= sentenceArr.length - 1; i += 1) {
+  for (i = 0; i < sentenceArr.length; i += 1) {
     if (sentenceArr[i] === word) {
-      console.log(word + ' is found in ' + sentence)
-    } else {
-      console.log(word + ' is NOT found in ' + sentence)
+        newArray.push(word)
     }
+  }
+
+  if (newArray.length) {
+    console.log(`${word} is found in ${sentence}`)
+  } else {
+    console.log(`${word} is NOT found in ${sentence}`)
   }
 }
 
