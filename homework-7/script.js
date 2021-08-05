@@ -10,7 +10,7 @@ function binaryAgent(str) {
   return lettersArray.join(' ');
 }
 
-binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+console.log(binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"));
 
 
 // Everything Be True
@@ -20,11 +20,17 @@ binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 0110
 // Remember, you can access object properties through either dot notation or [] notation.
 
 function truthCheck(collection, pre) {
-  pre = collection.find(elem => !elem[pre])
+  pre = collection.find(elem => !elem[pre]);
   return !pre;
 }
 
-truthCheck([{ "user": "Tinky-Winky", "sex": "male" }, { "user": "Dipsy", "sex": "male" }, { "user": "Laa-Laa", "sex": "female" }, { "user": "Po", "sex": "female" }], "sex");
+console.log(truthCheck([
+  { "user": "Tinky-Winky", "sex": "male" },
+  { "user": "Dipsy", "sex": "male" },
+  { "user": "Laa-Laa", "sex": "female" },
+  { "user": "Po", "sex": "female" }
+], "sex"));
+
 
 // Arguments Optional
 // Create a function that sums two arguments together. If only one argument is provided, then return a function that expects one argument and returns the sum.
@@ -33,3 +39,45 @@ truthCheck([{ "user": "Tinky-Winky", "sex": "male" }, { "user": "Dipsy", "sex": 
 // var sumTwoAnd = addTogether(2);
 // sumTwoAnd(3) returns 5.
 // If either argument isn't a valid number, return undefined.
+
+function add(a, b) {
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    return undefined;
+  }
+  
+  return a + b;
+}
+
+function curry(func) {
+  return function curried(...args) {
+
+    if (typeof args[0] !== 'number') {
+      return undefined;
+    }
+
+    if (args.length >= func.length) {
+      return func.apply(this, args);
+    } 
+    
+    return function(...args2) {
+      return curried.apply(this, args.concat(args2));
+    }
+  }
+}
+
+const addTogether = curry(add)
+
+console.log(addTogether(2, 5))
+
+
+// Make a Person
+// Fill in the object constructor with the following methods below:
+// getFirstName()
+// getLastName()
+// getFullName()
+// setFirstName(first)
+// setLastName(last)
+// setFullName(firstAndLast)
+// Run the tests to see the expected output for each method. 
+// The methods that take an argument must accept only one argument and it has to be a string.
+// These methods must be the only available means of interacting with the object.
