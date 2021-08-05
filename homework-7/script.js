@@ -40,34 +40,17 @@ console.log(truthCheck([
 // sumTwoAnd(3) returns 5.
 // If either argument isn't a valid number, return undefined.
 
-function add(a, b) {
-  if (typeof a !== 'number' || typeof b !== 'number') {
+const addTogether =(a, b)=> {
+  if (typeof a !== 'number' || typeof b !== 'number' && b !== undefined) {
     return undefined;
   }
   
-  return a + b;
+  if (b) return a + b;
+
+  return c => addTogether(a, c)
 }
 
-function curry(func) {
-  return function curried(...args) {
-
-    if (typeof args[0] !== 'number') {
-      return undefined;
-    }
-
-    if (args.length >= func.length) {
-      return func.apply(this, args);
-    } 
-    
-    return function(...args2) {
-      return curried.apply(this, args.concat(args2));
-    }
-  }
-}
-
-const addTogether = curry(add)
-
-console.log(addTogether(2, 5))
+console.log(addTogether(2, 3))
 
 
 // Make a Person
