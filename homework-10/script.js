@@ -64,7 +64,7 @@ const jumpingOnClouds = (...clouds) => {
   
   let jumps = 0, i = 0;
 
-  do {
+  while (i < length -1 ) {
     if (cloudsArray[i] === 1 || cloudsArray[i + 2] === 0) {
       i += 2;
     } else {
@@ -72,8 +72,7 @@ const jumpingOnClouds = (...clouds) => {
     }
   
     jumps += 1;
-
-  } while (i < length - 1);
+  }
   
   return jumps;
 }
