@@ -3,7 +3,7 @@
 // There is one pair of color 1 and one of color 2. There are three odd socks left, one of each color. The number of pairs is 2.
 
 const sockMerchant = (...colors) => {
-  let prop, pairsNum, pairsArr = [];
+  let prop, pairsArr = [];
 
   const pairedSocksNum = colors.reduce((acc, color) => {
     acc[color] = acc[color] ? acc[color] + 1 : 1;
@@ -16,13 +16,11 @@ const sockMerchant = (...colors) => {
     }
   };
 
-  pairsNum = pairsArr.reduce((acc, number) => acc += (number / 2), 0);
-
-  return pairsNum;
+  return  pairsArr.reduce((acc, number) => acc += (number / 2), 0);
 }
 
-// console.log(sockMerchant(1, 2, 1, 2, 1, 3, 2, 4, 4, 4, 4))
-// console.log(sockMerchant('black', 'black', 'black', 'white', 'white'))
+console.log(sockMerchant(1, 2, 1, 2, 1, 3, 2, 4, 4, 4, 4))
+console.log(sockMerchant('black', 'black', 'black', 'white', 'white', 'yellow'))
 
 
 // An avid hiker keeps meticulous records of their hikes. During the last hike that took exactly  steps, for every step it was noted if it was an uphill U , or a downhill D step. Hikes always start and end at sea level, and each step up or down represents a 1 unit change in altitude. We define the following terms:
@@ -50,10 +48,14 @@ const countingValleys = (steps) => {
   return valleyCounter;
 }
 
-//console.log(countingValleys('UDDUUUDD'))
+console.log(countingValleys('UDDUUUDD'));
 
 
-// There is a new mobile game that starts with consecutively numbered clouds. Some of the clouds are thunderheads and others are cumulus. The player can jump on any cumulus cloud having a number that is equal to the number of the current cloud plus 1 or 2. The player must avoid the thunderheads. Determine the minimum number of jumps it will take to jump from the starting postion to the last cloud. It is always possible to win the game.
+// There is a new mobile game that starts with consecutively numbered clouds. 
+// Some of the clouds are thunderheads and others are cumulus.
+// The player can jump on any cumulus cloud having a number that is equal to the number of the current cloud plus 1 or 2. 
+// The player must avoid the thunderheads.Determine the minimum number of jumps it will take to jump from the starting postion to the last cloud.
+// It is always possible to win the game.
 // For each game, you will get an array of clouds numbered  if they are safe or  if they must be avoided.
 
 const jumpingOnClouds = (...clouds) => {
@@ -76,4 +78,20 @@ const jumpingOnClouds = (...clouds) => {
   return jumps;
 }
 
-console.log(jumpingOnClouds(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0))
+console.log(jumpingOnClouds(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0));
+
+
+// There is a string, s, of lowercase English letters that is repeated infinitely many times. 
+// Given an integer, n, find and print the number of letter a's in the first  letters of the infinite string.
+
+const repeatedString = (str, n) => {
+  const string = str,
+        repeation = Math.floor(n / string.length),
+        restLength = n % string.length,
+        restLetters = string.substring(0, restLength),
+        repeatingPhrase = string.repeat(repeation) + restLetters;
+  
+  return repeatingPhrase.split('').filter(letter => letter === 'a').length;
+}
+
+console.log(repeatedString('aba', 13));
