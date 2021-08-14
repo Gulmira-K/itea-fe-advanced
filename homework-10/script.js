@@ -23,3 +23,31 @@ const sockMerchant = (...colors) => {
 
 console.log(sockMerchant(1, 2, 1, 2, 1, 3, 2, 4, 4, 4, 4))
 console.log(sockMerchant('black', 'black', 'black', 'white', 'white'))
+
+
+// An avid hiker keeps meticulous records of their hikes. During the last hike that took exactly  steps, for every step it was noted if it was an uphill U , or a downhill D step. Hikes always start and end at sea level, and each step up or down represents a 1 unit change in altitude. We define the following terms:
+// A mountain is a sequence of consecutive steps above sea level, starting with a step up from sea level and ending with a step down to sea level.
+// A valley is a sequence of consecutive steps below sea level, starting with a step down from sea level and ending with a step up to sea level.
+// Given the sequence of up and down steps during a hike, find and print the number of valleys walked through.
+
+const countingValleys = (steps) => {
+  const stepsArray = steps.split('');
+  
+  let valleyCounter = 0, altitude = 0;
+
+  stepsArray.forEach( step => {
+    if (step === 'U') {
+      altitude += 1;
+    } else {
+      altitude -= 1;
+    }
+    
+    if (altitude === 0 && (step === 'U' || step === 'D')) {
+      valleyCounter += 1;
+    } 
+  })
+
+  return valleyCounter;
+}
+
+console.log(countingValleys('UDDUUUDD'))
