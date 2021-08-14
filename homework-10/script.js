@@ -21,8 +21,8 @@ const sockMerchant = (...colors) => {
   return pairsNum;
 }
 
-console.log(sockMerchant(1, 2, 1, 2, 1, 3, 2, 4, 4, 4, 4))
-console.log(sockMerchant('black', 'black', 'black', 'white', 'white'))
+// console.log(sockMerchant(1, 2, 1, 2, 1, 3, 2, 4, 4, 4, 4))
+// console.log(sockMerchant('black', 'black', 'black', 'white', 'white'))
 
 
 // An avid hiker keeps meticulous records of their hikes. During the last hike that took exactly  steps, for every step it was noted if it was an uphill U , or a downhill D step. Hikes always start and end at sea level, and each step up or down represents a 1 unit change in altitude. We define the following terms:
@@ -50,4 +50,30 @@ const countingValleys = (steps) => {
   return valleyCounter;
 }
 
-console.log(countingValleys('UDDUUUDD'))
+//console.log(countingValleys('UDDUUUDD'))
+
+
+// There is a new mobile game that starts with consecutively numbered clouds. Some of the clouds are thunderheads and others are cumulus. The player can jump on any cumulus cloud having a number that is equal to the number of the current cloud plus 1 or 2. The player must avoid the thunderheads. Determine the minimum number of jumps it will take to jump from the starting postion to the last cloud. It is always possible to win the game.
+// For each game, you will get an array of clouds numbered  if they are safe or  if they must be avoided.
+
+const jumpingOnClouds = (...clouds) => {
+  const cloudsArray = clouds,
+        length = cloudsArray.length;
+  
+  let jumps = 0, i = 0;
+
+  do {
+    if (cloudsArray[i] === 1 || cloudsArray[i + 2] === 0) {
+      i += 2;
+    } else {
+      i += 1;
+    }
+  
+    jumps += 1;
+
+  } while (i < length - 1);
+  
+  return jumps;
+}
+
+console.log(jumpingOnClouds(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0))
